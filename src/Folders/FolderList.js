@@ -10,9 +10,9 @@ class FolderList extends React.Component {
     render(){
         const {folders=[], notes=[]} = this.context
 
-        const noteCount = (notes=[], folderId) => 
+        const noteCount = (notes=[], folder_id) => 
         notes.filter(note => 
-        note.folderId === folderId).length   
+        note.folder_id === folder_id).length   
 
         return (
             <>

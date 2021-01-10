@@ -134,7 +134,7 @@ class AddFolder extends React.Component {
 AddFolder.propTypes = {
     name: PropTypes.string.isRequired,
     formValid: PropTypes.bool,
-    history: PropTypes.func.isRequired
+    history: PropTypes.object.isRequired
 }
 
 

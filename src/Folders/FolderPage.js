@@ -10,11 +10,11 @@ class FolderPage extends React.Component {
 
     render(){
         const folders = this.context.folders.find(f =>
-            f.id === this.props.match.params.folderId
+            f.id.toString() === this.props.match.params.folderId
         ) || {}
 
         const notes = this.context.notes.filter(n =>
-            n.folderId === this.props.match.params.folderId
+            n.folder_id.toString() === this.props.match.params.folderId
         ) || {}
         
         return (
@@ -37,7 +37,7 @@ class FolderPage extends React.Component {
 }
 
 FolderPage.propTypes = {
-    match: PropTypes.string.isRequired
+    match: PropTypes.object.isRequired
 }
 
 

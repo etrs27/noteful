@@ -8,7 +8,7 @@ import NotesContext from '../NotesContext';
 class AddNote extends React.Component {
     state = {
         name: '',
-        folderId: '',
+        folder_id: '',
         content: '',
         error: null,
     };
@@ -30,7 +30,7 @@ class AddNote extends React.Component {
             this.setState({
                 error: "A name is required.",
             });
-        } else if (!this.state.folderId) {
+        } else if (!this.state.folder_id) {
             this.setState({
                 error: "Please choose a folder.",
             });
@@ -43,7 +43,7 @@ class AddNote extends React.Component {
             const newNote = {
                 name: e.target.name.value,
                 content: e.target.content.value,
-                folderId: e.target.folderId.value,
+                folder_id: e.target.folder_id.value,
                 modified: new Date(),
             };
 
@@ -61,7 +61,7 @@ class AddNote extends React.Component {
                 })
                 .then(note => {
                     this.context.addNote(note);
-                    this.props.history.push(`/folder/${note.folderId}`);
+                    this.props.history.push(`/folder/${note.folder_id}`);
                 })
                 .catch(error => {
                     console.error({ error });
@@ -93,7 +93,7 @@ class AddNote extends React.Component {
                         <label htmlFor="AddNote_folder">Folder</label>
                         <select
                             id="AddNote_folder"
-                            name="folderId"
+                            name="folder_id"
                             onChange={this.onChange}
                         >
                             <option value={null}>...</option>
@@ -133,9 +133,9 @@ class AddNote extends React.Component {
 
 AddNote.propTypes = {
     note: PropTypes.string.isRequired,
-    folderId: PropTypes.string.isRequired,
+    folder_id: PropTypes.number.isRequired,
     content: PropTypes.string.isRequired,
-    history: PropTypes.func.isRequired
+    history: PropTypes.object.isRequired
 }
 
 

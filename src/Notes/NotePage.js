@@ -11,14 +11,14 @@ class NotePage extends React.Component {
     }
 
     render(){
-        const note = this.context.notes.find(n =>
-            n.id === this.props.match.params.noteId
+        const {folders=[], notes=[]} = this.context
+       
+        let note = notes.find(n => n.id.toString() === this.props.match.params.noteId
         ) || {}
-    
-        const folder = this.context.folders.find(f =>
-            f.id === note.folderId
-        ) || {}    
-        
+       
+        let folder = folders.filter(f => f.id.toString() === note.folder_id
+        ) || {}
+
         return (
             <>
             <div className="NotePage_folder">
@@ -46,8 +46,8 @@ class NotePage extends React.Component {
 }
 
 NotePage.propTypes = {
-    history: PropTypes.func.isRequired,
-    match: PropTypes.string.isRequired
+    history: PropTypes.object.isRequired,
+    match: PropTypes.object.isRequired
 }
 
 
